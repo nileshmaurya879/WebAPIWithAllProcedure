@@ -19,5 +19,8 @@ namespace FinalWebAPI.Interface
         Task<bool> DeleteStudent(int id);
         Task<(IEnumerable<Category> cate, int total)> GetOutputDate();
         Task<(IEnumerable<Category>, IEnumerable<Category>)> GetMultipleData();
+        Task<bool> AddCategory_002(CategoryDto category);
+        Task<bool> UpdateCategory_002(CategoryDto category);
+        Task<bool> DeleteCategory_002(int CatId);
     }
 }

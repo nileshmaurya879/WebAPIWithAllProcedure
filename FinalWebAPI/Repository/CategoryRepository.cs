@@ -174,5 +174,27 @@ namespace FinalWebAPI.Repository
             return (categories,specificCategories);
         }
 
+        public async Task<bool> AddCategory_002(CategoryDto category)
+        {
+            var catName = new SqlParameter("@catName", category.CategoryName);
+            await _categoryDBContext.Database.ExecuteSqlRawAsync(@"exec sp_AddCategory_002 @catName", catName);
+            return true;
+        }
+
+        public async Task<bool> UpdateCategory_002(CategoryDto category)
+        {
+            var catId = new SqlParameter("@CatId", category.CategoryId);
+            var catName = new SqlParameter("@catName", category.CategoryName);
+            await _categoryDBContext.Database.ExecuteSqlRawAsync(@"exec sp_UpdateCategory_002 @CatId,@catName", catId,catName);
+            return true;
+        }
+
+        public async Task<bool> DeleteCategory_002(int CatId)
+        {
+            var catId = new SqlParameter("@CatId", CatId);
+            await _categoryDBContext.Database.ExecuteSqlRawAsync(@"exec sp_DeleteCategory @CatId", catId);
+            return true;
+        }
+
     }
 }

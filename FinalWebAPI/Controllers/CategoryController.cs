@@ -291,5 +291,46 @@ namespace FinalWebAPI.Controllers
                 throw new Exception(ex.Message);
             }
         }
+        [HttpPost("AddCategory_002")]
+        public async Task<ActionResult> AddCategory_002([FromBody] CategoryDto category)
+        {
+            try
+            {
+                var data = await _categoryRepository.AddCategory_002(category);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        [HttpPut("UpdateCategory_002")]
+        public async Task<ActionResult> UpdateCategory_002([FromBody] CategoryDto category)
+        {
+            try
+            {
+                var data = await _categoryRepository.UpdateCategory_002(category);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        [HttpDelete("DeleteCategory_002")]
+        public async Task<ActionResult> DeleteCategory_002(int CatId)
+        {
+            try
+            {
+                var data = await _categoryRepository.DeleteCategory_002(CatId);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }
