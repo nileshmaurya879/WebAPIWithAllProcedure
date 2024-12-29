@@ -196,5 +196,15 @@ namespace FinalWebAPI.Repository
             return true;
         }
 
+        public async Task<List<tblUser>> CheckLoginUser(string email, int password)
+        {
+            var em = new SqlParameter("@email", email);
+            var pass = new SqlParameter("@password", password);
+
+            var result = await _categoryDBContext.tblUser.FromSqlRaw(@"exec sp_CheckLoginUser @Email,@Password", em, pass).ToListAsync();
+            return result;
+        }
+
+
     }
 }

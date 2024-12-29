@@ -16,6 +16,7 @@ namespace FinalWebAPI.Models
         public DbSet<TempModel> TempModels { get; set; }
         public DbSet<TotalModel> TotalModels { get; set; }
         public DbSet<Student> Student { get; set; }
+        public DbSet<tblUser> tblUser { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Category>().HasKey(e => e.CategoryId);
@@ -23,6 +24,7 @@ namespace FinalWebAPI.Models
             modelBuilder.Entity<StudentNamesModel>().HasNoKey();
             modelBuilder.Entity<TempModel>().HasNoKey();
             modelBuilder.Entity<TotalModel>().HasNoKey();
+            modelBuilder.Entity<tblUser>().HasNoKey();
             base.OnModelCreating(modelBuilder);
         }
     }

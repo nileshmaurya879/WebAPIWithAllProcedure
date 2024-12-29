@@ -22,5 +22,6 @@ namespace FinalWebAPI.Interface
         Task<bool> AddCategory_002(CategoryDto category);
         Task<bool> UpdateCategory_002(CategoryDto category);
         Task<bool> DeleteCategory_002(int CatId);
+        Task<List<tblUser>> CheckLoginUser(string email, int password);
     }
 }

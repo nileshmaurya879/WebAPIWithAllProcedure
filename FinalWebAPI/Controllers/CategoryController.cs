@@ -332,5 +332,18 @@ namespace FinalWebAPI.Controllers
                 throw new Exception(ex.Message);
             }
         }
+        [HttpGet("CheckLoginUser")]
+        public async Task<ActionResult> CheckLoginUser(string email, int password)
+        {
+            try
+            {
+                var data = await _categoryRepository.CheckLoginUser(email, password);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

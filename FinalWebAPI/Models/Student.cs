@@ -6,4 +6,10 @@
         public string? StudentName { get; set; }
         public int StudentRollNo { get; set; }
     }
+
+    public class tblUser
+    {
+        public string Email { get; set; }
+        public int Password { get; set; }
+    }
 }
