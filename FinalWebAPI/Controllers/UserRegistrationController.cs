@@ -11,5 +11,11 @@ namespace FinalWebAPI.Controllers
         {
 
         }
+
+        [HttpGet]
+        public Task<IActionResult> GetUserLogin()
+        {
+            return null;
+        }
     }
 }

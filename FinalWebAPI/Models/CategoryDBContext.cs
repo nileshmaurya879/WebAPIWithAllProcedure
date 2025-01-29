@@ -17,6 +17,7 @@ namespace FinalWebAPI.Models
         public DbSet<TotalModel> TotalModels { get; set; }
         public DbSet<Student> Student { get; set; }
         public DbSet<tblUser> tblUser { get; set; }
+        public DbSet<tblUserRegistration> tblUserRegistration { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Category>().HasKey(e => e.CategoryId);
