@@ -26,6 +26,7 @@ namespace FinalWebAPI.Models
             modelBuilder.Entity<TempModel>().HasNoKey();
             modelBuilder.Entity<TotalModel>().HasNoKey();
             modelBuilder.Entity<tblUser>().HasNoKey();
+            modelBuilder.Entity<tblUserRegistration>().HasNoKey();
             base.OnModelCreating(modelBuilder);
         }
     }

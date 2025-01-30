@@ -1,21 +1,38 @@
 ﻿
 using FinalWebAPI.Interface;
 using FinalWebAPI.Models;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 
 namespace FinalWebAPI.Repository
 {
-    public class UserRegistrationRepository
+    public class UserRegistrationRepository:IUserRegistrationRepository
     {
-        public readonly ICategoryRepository _categoryRepository;
-        public UserRegistrationRepository(ICategoryRepository categoryRepository) 
+        public readonly CategoryDBContext _categoryDBContext;
+        public UserRegistrationRepository(CategoryDBContext categoryDBContext) 
         {
-            _categoryRepository = categoryRepository;
+            _categoryDBContext = categoryDBContext;
         }
 
-        public Task<IEnumerable<UserRegistrationDTO>> GetUserLoginDetails()
+        public async Task<List<tblUserRegistration>> GetUserLoginDetails(UserRegistrationRequestDTO model)
         {
+            var em = new SqlParameter("@email", model.Email);
+            var pass = new SqlParameter("@password", model.UserPassword);
 
-            return null;
+            var result = await _categoryDBContext.tblUserRegistration.FromSqlRaw(@"exec sp_GetLoginUserDetails @Email,@Password", em, pass).ToListAsync();
+            return result;
+           
+        }
+
+        public async Task<bool> CreateUserResgistration(UserRegistrationRequestDTO model)
+        {
+            var username = new SqlParameter("@UserName", model.UserName);
+            var em = new SqlParameter("@email", model.Email);
+            var pass = new SqlParameter("@password", model.UserPassword);
+
+            var result = await _categoryDBContext.Database.ExecuteSqlRawAsync(@"exec sp_CreateUserRegistration @UserName, @Email,@Password", username, em, pass);
+            return true;
+
         }
     }
 }

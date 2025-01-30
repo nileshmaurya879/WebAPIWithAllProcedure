@@ -13,6 +13,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<CategoryDBContext>(e => e.UseSqlServer(builder.Configuration.GetConnectionString("TestDB")));
 builder.Services.AddScoped<ICategoryRepository,CategoryRepository>();
+builder.Services.AddScoped<IUserRegistrationRepository, UserRegistrationRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
