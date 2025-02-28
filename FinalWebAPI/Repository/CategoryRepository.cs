@@ -3,7 +3,6 @@ using FinalWebAPI.Interface;
 using FinalWebAPI.Models;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
 using System.Data;
 
 namespace FinalWebAPI.Repository
@@ -204,7 +203,5 @@ namespace FinalWebAPI.Repository
             var result = await _categoryDBContext.tblUser.FromSqlRaw(@"exec sp_CheckLoginUser @Email,@Password", em, pass).ToListAsync();
             return result;
         }
-
-
     }
 }

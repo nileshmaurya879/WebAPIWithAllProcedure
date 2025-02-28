@@ -1,6 +1,5 @@
 ﻿using FinalWebAPI.Interface;
 using FinalWebAPI.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FinalWebAPI.Controllers
@@ -16,7 +15,7 @@ namespace FinalWebAPI.Controllers
         }
 
         [HttpPost("GetUserLogin")]
-        public async Task<IActionResult> GetUserLogin([FromBody]UserRegistrationRequestDTO model)
+        public async Task<IActionResult> GetUserLogin([FromBody] UserLoginRequestDto model)
         {
             var result =await _userRegistrationRepository.GetUserLoginDetails(model);
             return Ok(result);

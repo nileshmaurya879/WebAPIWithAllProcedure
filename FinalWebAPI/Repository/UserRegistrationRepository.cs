@@ -14,10 +14,10 @@ namespace FinalWebAPI.Repository
             _categoryDBContext = categoryDBContext;
         }
 
-        public async Task<List<tblUserRegistration>> GetUserLoginDetails(UserRegistrationRequestDTO model)
+        public async Task<List<tblUserRegistration>> GetUserLoginDetails(UserLoginRequestDto model)
         {
             var em = new SqlParameter("@email", model.Email);
-            var pass = new SqlParameter("@password", model.UserPassword);
+            var pass = new SqlParameter("@password", model.Password);
 
             var result = await _categoryDBContext.tblUserRegistration.FromSqlRaw(@"exec sp_GetLoginUserDetails @Email,@Password", em, pass).ToListAsync();
             return result;
