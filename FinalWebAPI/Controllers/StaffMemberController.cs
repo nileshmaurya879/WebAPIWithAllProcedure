@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FinalWebAPI.Interface;
+using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace FinalWebAPI.Controllers
 {
@@ -6,9 +8,17 @@ namespace FinalWebAPI.Controllers
     [ApiController]
     public class StaffMemberController : ControllerBase
     {
-        public StaffMemberController() 
+        public readonly IStaffMemberRepository _staffMemberRepository;
+        public StaffMemberController(IStaffMemberRepository staffMemberRepository) 
         {
-            
+            _staffMemberRepository = staffMemberRepository;
+        }
+
+        [HttpGet]
+        public IActionResult getStaffMemebr()
+        {
+            var result = _staffMemberRepository.GetAllStaffMember();
+            return Ok();
         }
     }
 }
