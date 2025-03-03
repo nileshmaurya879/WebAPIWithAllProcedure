@@ -15,10 +15,10 @@ namespace FinalWebAPI.Controllers
         }
 
         [HttpGet]
-        public IActionResult getStaffMemebr()
+        public async Task<IActionResult> GetStaffMemebr()
         {
-            var result = _staffMemberRepository.GetAllStaffMember();
-            return Ok();
+            var result = await _staffMemberRepository.GetAllStaffMember();
+            return Ok(result);
         }
     }
 }

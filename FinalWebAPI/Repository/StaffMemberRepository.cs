@@ -15,7 +15,8 @@ namespace FinalWebAPI.Repository
 
         public async Task<IEnumerable<StaffMember>> GetAllStaffMember()
         {
-           return _dbConnection.Query<StaffMember>("sp_GetStaffMemberss").ToList();
+            var result = await _dbConnection.QueryAsync<StaffMember>("sp_GetStaffMember");
+            return result.ToList();
         }
     }
 }
