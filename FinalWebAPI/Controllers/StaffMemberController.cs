@@ -1,4 +1,5 @@
 ﻿using FinalWebAPI.Interface;
+using FinalWebAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
 
@@ -18,6 +19,13 @@ namespace FinalWebAPI.Controllers
         public async Task<IActionResult> GetStaffMemebr()
         {
             var result = await _staffMemberRepository.GetAllStaffMember();
+            return Ok(result);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddStaffMemebr([FromBody]AddStaffMember addStaff)
+        {
+            var result = await _staffMemberRepository.AddStaffMember(addStaff);
             return Ok(result);
         }
     }
