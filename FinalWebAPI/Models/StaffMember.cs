@@ -2,6 +2,7 @@
 {
     public class StaffMember
     {
+        public int? SrNo { get; set; }
         public int? Id { get; set; }
         public string? MemberName { get; set; }
         public long? Mobile { get; set; }
