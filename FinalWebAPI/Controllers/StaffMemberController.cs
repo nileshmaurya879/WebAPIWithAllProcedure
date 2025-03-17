@@ -28,5 +28,26 @@ namespace FinalWebAPI.Controllers
             var result = await _staffMemberRepository.AddStaffMember(addStaff);
             return Ok(result);
         }
+
+        [HttpDelete]
+        public async Task<IActionResult> DeleteStaffMemebr(int id)
+        {
+            var result = await _staffMemberRepository.DeleteStaffMember(id);
+            return Ok(result);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateStaffMemebr([FromBody] AddStaffMember addStaff)
+        {
+            var result = await _staffMemberRepository.UpdateStaffMemebr(addStaff);
+            return Ok(result);
+        }
+
+        [HttpGet("GetStaffMemberById")]
+        public async Task<IActionResult> GetStaffMemberById(int id)
+        {
+            var result = await _staffMemberRepository.GetStaffMemberById(id);
+            return Ok(result);
+        }
     }
 }

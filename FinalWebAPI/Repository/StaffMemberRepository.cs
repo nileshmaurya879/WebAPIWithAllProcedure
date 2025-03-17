@@ -34,5 +34,37 @@ namespace FinalWebAPI.Repository
             return true;
         }
 
+        public async Task<bool> DeleteStaffMember(int id)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@Id", id);
+           
+            var result = await _dbConnection.QueryAsync("sp_DeleteStaffMember", parameters, commandType: CommandType.StoredProcedure, commandTimeout: 3000);
+            return true;
+        }
+
+        public async Task<bool> UpdateStaffMemebr(AddStaffMember addStaffMember)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@Id", addStaffMember.Id);
+            parameters.Add("@MemberName", addStaffMember.MemberName);
+            parameters.Add("@Mobile", addStaffMember.Mobile);
+            parameters.Add("@StaffAddress", addStaffMember.StaffAddress);
+            parameters.Add("@MemberServices", addStaffMember.MemberServices);
+            parameters.Add("@Salary", addStaffMember.Salary);
+
+            var result = await _dbConnection.QueryAsync("sp_UpdateStaffMember", parameters, commandType: CommandType.StoredProcedure, commandTimeout: 3000);
+            return true;
+        }
+
+        public async Task<StaffMember> GetStaffMemberById(int id)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@Id", id);
+
+            var result = await _dbConnection.QueryAsync<StaffMember>("sp_GetStaffMemberById", parameters, commandType: CommandType.StoredProcedure, commandTimeout: 3000);
+            return result.FirstOrDefault();
+        }
+
     }
 }
